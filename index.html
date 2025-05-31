@@ -6,14 +6,26 @@
     <title>Snake Game</title>
     <style>
         body { display: flex; justify-content: center; align-items: center; height: 100vh; background: #222; }
-        canvas { background: #111; border: 1px solid #555; }
+        canvas { background: #111; border: 1px solid #555; display: block; margin: 0 auto; }
         h1 { color: #fff; text-align: center; }
+        #overlay {
+            position: absolute; top: 0; left: 0; width: 100vw; height: 100vh;
+            display: flex; flex-direction: column; justify-content: center; align-items: center;
+            background: rgba(0,0,0,0.7); z-index: 10;
+        }
+        #overlay.hidden { display: none; }
+        #score { color: #fff; text-align: center; margin-top: 10px; }
     </style>
 </head>
 <body>
     <div>
         <h1>Snake Game</h1>
         <canvas id="game" width="400" height="400"></canvas>
+        <div id="score"></div>
+    </div>
+    <div id="overlay">
+        <div id="message" style="color:white; font-size:2em; margin-bottom:20px;">Snake Game</div>
+        <button id="startBtn">Start</button>
     </div>
     <script src="snake.js"></script>
 </body>

@@ -5,17 +5,30 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Snake Game</title>
     <style>
-        body { display: flex; justify-content: center; align-items: center; height: 100vh; background: #222; }
-        canvas { background: #111; border: 1px solid #555; display: block; margin: 0 auto; }
-        h1 { color: #fff; text-align: center; }
+        body { display: flex; justify-content: center; align-items: center; height: 100vh; background: linear-gradient(135deg, #f8ffae 0%, #43c6ac 100%); margin:0; }
+        canvas { background: #222; border: 3px solid #ffb347; box-shadow: 0 0 20px #ffb347; display: block; margin: 0 auto; }
+        h1 { color: #ff5e62; text-align: center; font-family: 'Comic Sans MS', cursive, sans-serif; font-size: 2.5em; margin-bottom: 0.5em; text-shadow: 2px 2px 8px #fff176; }
         #overlay {
             position: absolute; top: 0; left: 0; width: 100vw; height: 100vh;
             display: flex; flex-direction: column; justify-content: center; align-items: center;
             background: rgba(0,0,0,0.7); z-index: 10;
         }
         #overlay.hidden { display: none; }
-        #score { color: #fff; text-align: center; margin-top: 10px; }
-        #rule { color: white; font-size: 1em; margin-bottom: 20px; max-width: 320px; text-align: center; }
+        #score { color: #fff; text-align: center; margin-top: 10px; font-size: 1.2em; }
+        #rule {
+            color: #fff; font-size: 1.1em; margin-bottom: 20px; max-width: 340px; text-align: left;
+            background: rgba(255,255,255,0.15); border-radius: 12px; padding: 16px; box-shadow: 0 0 10px #fff176;
+        }
+        #startBtn {
+            background: linear-gradient(90deg, #ff5e62 0%, #ffb347 100%);
+            color: #fff; border: none; border-radius: 8px; font-size: 1.2em; padding: 12px 36px; margin-top: 10px;
+            cursor: pointer; box-shadow: 0 2px 8px #ffb347; font-weight: bold;
+        }
+        #startBtn:hover { background: linear-gradient(90deg, #43c6ac 0%, #f8ffae 100%); color: #222; }
+        .life {
+            display: inline-block; width: 18px; height: 18px; margin: 0 2px; border-radius: 50%; background: linear-gradient(135deg, #ff5e62 0%, #ffb347 100%); border: 2px solid #fff; box-shadow: 0 0 4px #fff176;
+        }
+        #lives { margin-top: 8px; text-align: center; }
     </style>
 </head>
 <body>
@@ -23,10 +36,18 @@
         <h1>Snake Game</h1>
         <canvas id="game" width="400" height="400"></canvas>
         <div id="score"></div>
+        <div id="lives"></div>
     </div>
     <div id="overlay">
-        <div id="message" style="color:white; font-size:2em; margin-bottom:20px;">Snake Game</div>
-        <div id="rule">지렁이 게임입니다.<br>방향키로 지렁이를 조작해서 빨간색 먹이를 먹으세요.<br>먹이를 먹을수록 몸집이 커집니다.<br>벽이나 자기 몸에 부딪히면 게임이 종료됩니다.</div>
+        <div id="message" style="color:#ffb347; font-size:2em; margin-bottom:20px; font-family:'Comic Sans MS', cursive;">Snake Game</div>
+        <div id="rule">
+            <b>게임 방법</b><br>
+            1. 방향키(←↑→↓)로 지렁이를 조작하세요.<br>
+            2. 빨간색 먹이를 먹으면 몸집이 커집니다.<br>
+            3. 벽이나 자기 몸에 부딪히면 목숨이 1개 줄어듭니다.<br>
+            4. 목숨은 총 3개입니다.<br>
+            5. 모든 목숨을 잃으면 게임이 종료됩니다.<br>
+        </div>
         <button id="startBtn">Start</button>
     </div>
     <script src="snake.js"></script>
